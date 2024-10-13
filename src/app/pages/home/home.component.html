@@ -1,0 +1,28 @@
+<div class="flex flex-col">
+
+    <div class="text-center text-3xl font-bold mb-10 py-4">
+        Catalogue de voitures
+    </div>
+    
+    <div class="flex justify-between items-center w-full mb-10">
+        <!-- Barre de recherche et bouton Rechercher -->
+        <div class="flex w-8/12 gap-2">
+            <input 
+                (keyup)="onSearchCar($event)"
+                type="text" 
+                placeholder="Rechercher une marque ou un modèle"
+                class="w-full px-4 py-2 border rounded">
+        </div>
+        <!-- Bouton d'ajout -->
+        <button class="bg-blue-500 text-white font-bold py-2 px-4 rounded shadow-md hover:shadow-lg  hover:bg-blue-600 transition duration-300 ease-in-out"
+        (click)="onClickAddCar()">
+            Ajouter
+        </button>
+    </div>
+    
+
+    <app-car-table
+        [searchText]="searchText">
+    </app-car-table>
+
+</div>

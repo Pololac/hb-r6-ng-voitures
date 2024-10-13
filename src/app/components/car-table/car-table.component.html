@@ -1,0 +1,29 @@
+<!-- Conteneur pour le tableau et les détails -->
+<div class="flex gap-4">
+  <!-- Tableau des voitures -->
+  <div [ngClass]="{'w-full': !selectedCar, 'w-8/12': selectedCar}" class="h-full">
+    <table class="w-full max-w-full border text-center table-auto h-full">
+      <thead>
+        <tr>
+          <th scope="col" class="py-2 px-4 border-b-2 border-gray-300">ID</th>
+          <th scope="col" class="py-2 px-4 border-b-2 border-gray-300">MARQUE</th>
+          <th scope="col" class="py-2 px-4 border-b-2 border-gray-300">MODELE</th>
+          <th scope="col" class="py-2 px-4 border-b-2 border-gray-300">ACTION</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let car of filteredCars" 
+          app-car-table-row
+          [car]="car"
+          (showDetailsClicked)="onShowDetailsClicked(car)"
+          (deleteCarClicked)="onDeleteCarClicked(car)">
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- Card pour l'image de la voiture sélectionnée -->
+  <div *ngIf="selectedCar" class="w-4/12 flex flex-col h-full border rounded shadow p-4">
+    <app-car-card [car]="selectedCar"></app-car-card>
+  </div>
+</div>
